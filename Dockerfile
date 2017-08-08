@@ -1,10 +1,5 @@
 FROM debian:jessie
 
-USER grafana
-RUN mkdir -p /etc/grafana /var/lib/grafana /var/log/grafana
-USER root
-
-
 RUN apt-get update && \
     apt-get -y --no-install-recommends install libfontconfig curl ca-certificates && \
     apt-get clean && \
@@ -20,6 +15,6 @@ VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 
 EXPOSE 3000
 
-COPY run.sh /run.sh
+COPY ./run.sh /run.sh
 
 ENTRYPOINT ["/run.sh"]
