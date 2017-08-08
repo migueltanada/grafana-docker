@@ -4,8 +4,6 @@
 : "${GF_PATHS_LOGS:=/var/log/grafana}"
 : "${GF_PATHS_PLUGINS:=/var/lib/grafana/plugins}"
 
-echo a
-chown -R grafana:grafana /etc/grafana
 
 if [ ! -z ${GF_AWS_PROFILES+x} ]; then
     mkdir -p ~grafana/.aws/
@@ -26,8 +24,6 @@ if [ ! -z ${GF_AWS_PROFILES+x} ]; then
         fi
     done
 
-   # chown grafana:grafana -R ~grafana/.aws
-   # chmod 600 ~grafana/.aws/credentials
 fi
 
 if [ ! -z "${GF_INSTALL_PLUGINS}" ]; then
