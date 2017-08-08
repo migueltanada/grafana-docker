@@ -1,11 +1,18 @@
 #!/bin/bash -e
-
+    /usr/bin/unzip-plugins 
+    /usr/bin/fix-permissions /var/lib/grafana 
+    /usr/bin/fix-permissions /var/lib/grafana-plugins 
+    /usr/bin/fix-permissions /var/log/grafana 
+    /usr/bin/fix-permissions /etc/grafana 
+    /usr/bin/fix-permissions /usr/share/grafana 
+    /usr/bin/fix-permissions /usr/sbin/grafana-server
+    
 : "${GF_PATHS_DATA:=/var/lib/grafana}"
 : "${GF_PATHS_LOGS:=/var/log/grafana}"
 : "${GF_PATHS_PLUGINS:=/var/lib/grafana/plugins}"
 
-chown -R grafana:grafana "$GF_PATHS_DATA" "$GF_PATHS_LOGS"
-chown -R grafana:grafana /etc/grafana
+#chown -R grafana:grafana "$GF_PATHS_DATA" "$GF_PATHS_LOGS"
+#chown -R grafana:grafana /etc/grafana
 
 if [ ! -z ${GF_AWS_PROFILES+x} ]; then
     mkdir -p ~grafana/.aws/
@@ -26,8 +33,8 @@ if [ ! -z ${GF_AWS_PROFILES+x} ]; then
         fi
     done
 
-    chown grafana:grafana -R ~grafana/.aws
-    chmod 600 ~grafana/.aws/credentials
+   # chown grafana:grafana -R ~grafana/.aws
+   # chmod 600 ~grafana/.aws/credentials
 fi
 
 if [ ! -z "${GF_INSTALL_PLUGINS}" ]; then
