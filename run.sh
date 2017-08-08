@@ -1,11 +1,4 @@
 #!/bin/bash -e
-    /usr/bin/unzip-plugins 
-    /usr/bin/fix-permissions /var/lib/grafana 
-    /usr/bin/fix-permissions /var/lib/grafana-plugins 
-    /usr/bin/fix-permissions /var/log/grafana 
-    /usr/bin/fix-permissions /etc/grafana 
-    /usr/bin/fix-permissions /usr/share/grafana 
-    /usr/bin/fix-permissions /usr/sbin/grafana-server
     
 : "${GF_PATHS_DATA:=/var/lib/grafana}"
 : "${GF_PATHS_LOGS:=/var/log/grafana}"
